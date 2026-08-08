@@ -1,0 +1,47 @@
+{
+  "name": "kuro",
+  "productName": "Kuro",
+  "version": "1.0.0",
+  "description": "A free, open-source pixel cat that lives on your desktop. Follows your cursor, kneads when you type, reminds you to stretch and drink water, runs a Pomodoro timer, and hops when your AI agent finishes.",
+  "main": "main.js",
+  "license": "MIT",
+  "author": "Kuro contributors",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win",
+    "dist:mac": "electron-builder --mac",
+    "dist:linux": "electron-builder --linux"
+  },
+  "devDependencies": {
+    "electron": "^31.3.0",
+    "electron-builder": "^24.13.3"
+  },
+  "optionalDependencies": {
+    "uiohook-napi": "^1.5.4"
+  },
+  "build": {
+    "appId": "dev.kuro.app",
+    "productName": "Kuro",
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**",
+      "settings/**",
+      "assets/**"
+    ],
+    "win": {
+      "icon": "assets/icon.png",
+      "target": ["nsis", "portable"]
+    },
+    "mac": {
+      "icon": "assets/icon.png",
+      "category": "public.app-category.entertainment",
+      "target": ["dmg", "zip"]
+    },
+    "linux": {
+      "icon": "assets/icon.png",
+      "target": ["AppImage"]
+    }
+  }
+}

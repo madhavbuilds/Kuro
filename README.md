@@ -1,16 +1,5 @@
 <p align="center">
-  <img src="assets/icon.png" width="120" alt="Kuro icon" />
-</p>
-
-<h1 align="center">Kuro</h1>
-
-<p align="center">
-  <strong>A free, open-source pixel cat that lives on your desktop.</strong>
-</p>
-
-<p align="center">
-  Follows your cursor · kneads when you type · stretches with you<br/>
-  runs Pomodoro · hops when your AI agent finishes
+  <img src="preview/kuro-banner.jpg" width="920" alt="Kuro — a pixel cat that lives in your computer" />
 </p>
 
 <p align="center">
@@ -21,7 +10,12 @@
 </p>
 
 <p align="center">
-  <img src="preview/banner.png" width="920" alt="Kuro pose sheet — idle, hunt, pet, knead, sleep, stretch, mochi, overheat, and coat patterns" />
+  <img src="preview/kuro-demo.gif" width="420" alt="Kuro demo — eyes follow your cursor" />
+</p>
+
+<p align="center">
+  Follows your cursor · kneads when you type · stretches with you<br/>
+  runs Pomodoro · hops when your AI agent finishes
 </p>
 
 <p align="center">

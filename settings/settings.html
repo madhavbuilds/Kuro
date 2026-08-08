@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Kuro settings</title>
+  <style>
+    :root {
+      --bg: #171310;
+      --panel: #221c17;
+      --ink: #f4ead9;
+      --line: #4a3b2e;
+      --accent: #f5a25d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 18px;
+      background: var(--bg); color: var(--ink);
+      font-family: "Courier New", monospace;
+      font-size: 13px;
+    }
+    h1 { font-size: 15px; letter-spacing: 2px; margin: 0 0 14px; }
+    h1::before { content: "▚ "; color: var(--accent); }
+    fieldset {
+      border: 2px solid var(--line); border-radius: 0;
+      background: var(--panel); margin: 0 0 12px; padding: 10px 12px;
+    }
+    legend { padding: 0 6px; color: var(--accent); letter-spacing: 1px; }
+    label { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 7px 0; }
+    input[type=text], input[type=time], input[type=number], select {
+      background: var(--bg); color: var(--ink);
+      border: 2px solid var(--line); padding: 5px 7px;
+      font-family: inherit; font-size: 13px; width: 190px;
+    }
+    input[type=number] { width: 70px; }
+    input[type=color] { width: 44px; height: 28px; border: 2px solid var(--line); background: var(--bg); padding: 1px; }
+    input[type=range] { width: 190px; accent-color: var(--accent); }
+    .row { display: flex; gap: 8px; align-items: center; }
+    button {
+      width: 100%; padding: 10px; margin-top: 4px;
+      background: var(--accent); color: #221407;
+      border: 0; font-family: inherit; font-size: 14px; font-weight: bold;
+      letter-spacing: 2px; cursor: pointer;
+    }
+    button:active { transform: translateY(1px); }
+    .saved { text-align: center; height: 18px; color: #8fd694; margin-top: 6px; }
+    .hint { color: #9b8a77; font-size: 11px; margin: 4px 0 0; }
+  </style>
+</head>
+<body>
+  <h1>KURO SETTINGS</h1>
+
+  <fieldset>
+    <legend>YOUR CAT</legend>
+    <label>Your name <input type="text" id="name" placeholder="so the cat can call you" /></label>
+    <label>Body color <input type="color" id="baseColor" /></label>
+    <label>Pattern color <input type="color" id="patternColor" /></label>
+    <label>Belly color <input type="color" id="bellyColor" /></label>
+    <label>Pattern
+      <select id="pattern">
+        <option value="solid">Solid</option>
+        <option value="tabby">Tabby stripes</option>
+        <option value="tuxedo">Tuxedo</option>
+        <option value="calico">Calico patches</option>
+        <option value="siamese">Siamese points</option>
+      </select>
+    </label>
+    <label>Size <input type="range" id="scale" min="0.7" max="1.6" step="0.05" /></label>
+  </fieldset>
+
+  <fieldset>
+    <legend>REMINDERS</legend>
+    <label>Stretch every (min, 0 = off) <input type="number" id="stretchEveryMin" min="0" max="480" /></label>
+    <label>Water every (min, 0 = off) <input type="number" id="waterEveryMin" min="0" max="480" /></label>
+    <label>Daily reminder at <input type="time" id="customReminderTime" /></label>
+    <label>…saying <input type="text" id="customReminderText" placeholder="e.g. standup meeting!" /></label>
+    <label>Pinned note <input type="text" id="fixedMessage" placeholder="stays above the cat" /></label>
+  </fieldset>
+
+  <fieldset>
+    <legend>POMODORO</legend>
+    <div class="row">
+      <label>Focus <input type="number" id="pomodoroFocusMin" min="5" max="120" /></label>
+      <label>Break <input type="number" id="pomodoroBreakMin" min="1" max="60" /></label>
+    </div>
+    <p class="hint">Start/stop from the tray icon menu.</p>
+  </fieldset>
+
+  <button id="save">SAVE ▸</button>
+  <div class="saved" id="saved"></div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const fields = ['name','baseColor','patternColor','bellyColor','pattern','scale',
+      'stretchEveryMin','waterEveryMin','customReminderTime','customReminderText',
+      'fixedMessage','pomodoroFocusMin','pomodoroBreakMin'];
+
+    window.kuro.getSettings().then((s) => {
+      for (const f of fields) if ($(f) && s[f] !== undefined) $(f).value = s[f];
+    });
+
+    $('save').addEventListener('click', () => {
+      const out = {};
+      for (const f of fields) {
+        const el = $(f);
+        out[f] = el.type === 'number' || el.type === 'range' ? Number(el.value) : el.value;
+      }
+      window.kuro.saveSettings(out);
+      $('saved').textContent = '✓ saved — the cat noticed';
+      setTimeout(() => $('saved').textContent = '', 2000);
+    });
+  </script>
+</body>
+</html>
