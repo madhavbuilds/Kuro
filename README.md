@@ -19,8 +19,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/madhavbuilds/Kuro/releases/latest"><img alt="Download for Windows" src="https://img.shields.io/badge/Download-Windows-2d2a30?style=for-the-badge&logo=windows&logoColor=efe9e0&labelColor=4c4753" /></a>
-  <a href="https://github.com/madhavbuilds/Kuro/releases/latest"><img alt="Download for macOS" src="https://img.shields.io/badge/Download-macOS-2d2a30?style=for-the-badge&logo=apple&logoColor=efe9e0&labelColor=4c4753" /></a>
+  <a href="https://github.com/madhavbuilds/Kuro/releases/latest/download/Kuro-Setup-1.0.0.exe"><img alt="Download for Windows" src="https://img.shields.io/badge/Download-Windows-2d2a30?style=for-the-badge&logo=windows&logoColor=efe9e0&labelColor=4c4753" /></a>
+  <a href="https://github.com/madhavbuilds/Kuro/releases/latest/download/Kuro-1.0.0-universal.dmg"><img alt="Download for macOS" src="https://img.shields.io/badge/Download-macOS-2d2a30?style=for-the-badge&logo=apple&logoColor=efe9e0&labelColor=4c4753" /></a>
 </p>
 
 <p align="center">
@@ -32,12 +32,15 @@
 
 ## Download
 
-Grab the latest installers from **[GitHub Releases](https://github.com/madhavbuilds/Kuro/releases/latest)** — no build step required.
+Direct installs — no Node, no build step:
 
-| Platform | What to get |
+| Platform | Download |
 |:--|:--|
-| **Windows** | `Kuro-Setup-*.exe` (installer) or `Kuro-Portable-*.exe` (no install) |
-| **macOS** | `Kuro-*-universal.dmg` (Apple Silicon + Intel) |
+| **Windows** (installer) | [Kuro-Setup-1.0.0.exe](https://github.com/madhavbuilds/Kuro/releases/latest/download/Kuro-Setup-1.0.0.exe) |
+| **Windows** (portable) | [Kuro-Portable-1.0.0.exe](https://github.com/madhavbuilds/Kuro/releases/latest/download/Kuro-Portable-1.0.0.exe) |
+| **macOS** (Apple Silicon + Intel) | [Kuro-1.0.0-universal.dmg](https://github.com/madhavbuilds/Kuro/releases/latest/download/Kuro-1.0.0-universal.dmg) |
+
+All releases: [github.com/madhavbuilds/Kuro/releases](https://github.com/madhavbuilds/Kuro/releases/latest)
 
 Unsigned builds may trip SmartScreen / Gatekeeper — open anyway / right-click → Open on Mac. That's normal for free unsigned apps.
 
