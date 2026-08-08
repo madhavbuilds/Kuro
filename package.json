@@ -23,6 +23,9 @@
   "build": {
     "appId": "dev.kuro.app",
     "productName": "Kuro",
+    "directories": {
+      "output": "dist"
+    },
     "files": [
       "main.js",
       "preload.js",
@@ -34,14 +37,39 @@
       "icon": "assets/icon.png",
       "target": ["nsis", "portable"]
     },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "artifactName": "Kuro-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Kuro-Portable-${version}.${ext}"
+    },
     "mac": {
       "icon": "assets/icon.png",
       "category": "public.app-category.entertainment",
-      "target": ["dmg", "zip"]
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false,
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["universal"]
+        },
+        {
+          "target": "zip",
+          "arch": ["universal"]
+        }
+      ],
+      "artifactName": "Kuro-${version}-${arch}.${ext}"
+    },
+    "dmg": {
+      "artifactName": "Kuro-${version}-${arch}.${ext}"
     },
     "linux": {
       "icon": "assets/icon.png",
-      "target": ["AppImage"]
+      "target": ["AppImage"],
+      "artifactName": "Kuro-${version}.${ext}"
     }
   }
 }

@@ -19,9 +19,27 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/madhavbuilds/Kuro/releases/latest"><img alt="Download for Windows" src="https://img.shields.io/badge/Download-Windows-2d2a30?style=for-the-badge&logo=windows&logoColor=efe9e0&labelColor=4c4753" /></a>
+  <a href="https://github.com/madhavbuilds/Kuro/releases/latest"><img alt="Download for macOS" src="https://img.shields.io/badge/Download-macOS-2d2a30?style=for-the-badge&logo=apple&logoColor=efe9e0&labelColor=4c4753" /></a>
+</p>
+
+<p align="center">
   <em>No accounts. No license keys. No spyware.<br/>
   MIT licensed — install it on every machine you own.</em>
 </p>
+
+---
+
+## Download
+
+Grab the latest installers from **[GitHub Releases](https://github.com/madhavbuilds/Kuro/releases/latest)** — no build step required.
+
+| Platform | What to get |
+|:--|:--|
+| **Windows** | `Kuro-Setup-*.exe` (installer) or `Kuro-Portable-*.exe` (no install) |
+| **macOS** | `Kuro-*-universal.dmg` (Apple Silicon + Intel) |
+
+Unsigned builds may trip SmartScreen / Gatekeeper — open anyway / right-click → Open on Mac. That's normal for free unsigned apps.
 
 ---
 
@@ -108,8 +126,8 @@ Inspired by [Comnyang](https://comnyang.com); shares **no** code or assets with 
 Requires **Node.js 18+**.
 
 ```bash
-git clone <this-repo> kuro
-cd kuro
+git clone https://github.com/madhavbuilds/Kuro.git
+cd Kuro
 npm install
 npm start
 ```
@@ -191,16 +209,18 @@ The same curls work from Codex hooks, git hooks, Makefiles, CI scripts — anyth
 
 ---
 
-## Build installers
+## Build installers (from source)
+
+Prefer the [GitHub Releases](https://github.com/madhavbuilds/Kuro/releases/latest) downloads above. To build yourself:
 
 ```bash
 npm run dist          # current OS
 npm run dist:win      # Windows — NSIS + portable
-npm run dist:mac      # macOS — dmg + zip
+npm run dist:mac      # macOS — universal dmg + zip
 npm run dist:linux    # Linux — AppImage
 ```
 
-Unsigned builds will trip SmartScreen / Gatekeeper. That's normal for free unsigned apps.
+Pushing a `v*` tag runs CI and publishes Windows + macOS installers to GitHub Releases automatically.
 
 ---
 
