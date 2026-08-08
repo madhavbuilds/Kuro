@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #131019;
+  --bg2: #1a1624;
+  --panel: #221d30;
+  --panel2: #2a2338;
+  --line: #37304a;
+  --line2: #4a4165;
+  --ink: #f2ece2;
+  --muted: #a99cba;
+  --pink: #ef93a4;
+  --pink2: #ffb3c0;
+  --pinkdim: #794a58;
+  --key: #d2ccc2;
+  --green: #8fd39a;
+  --amber: #e8c24f;
+  --red: #e8433f;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg2);
+  --color-panel: var(--panel);
+  --color-panel2: var(--panel2);
+  --color-line: var(--line);
+  --color-line2: var(--line2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-pink: var(--pink);
+  --color-pink2: var(--pink2);
+  --color-pinkdim: var(--pinkdim);
+  --color-key: var(--key);
+  --color-green: var(--green);
+  --color-amber: var(--amber);
+  --color-red: var(--red);
+  --font-disp: var(--font-vt323);
+  --font-pix: var(--font-press-start);
+  --font-body: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(1100px 520px at 84% -8%, rgba(239, 147, 164, 0.14), transparent 62%),
+    radial-gradient(820px 460px at -6% 14%, rgba(143, 211, 154, 0.07), transparent 60%),
+    radial-gradient(700px 700px at 50% 120%, rgba(122, 74, 88, 0.1), transparent 60%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.16;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.6) 0 1px,
+    transparent 1px 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+canvas {
+  image-rendering: pixelated;
+}
+
+@keyframes mar {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: translateX(-50%) scale(0.8);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+.animate-marquee {
+  animation: mar 22s linear infinite;
+}
+
+.animate-cap-pop {
+  animation: pop 0.28s ease;
+}
+
+.cap-arrow::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  margin-left: -4px;
+  width: 8px;
+  height: 8px;
+  background: #fffdf5;
+  border-right: 2px solid #20242b;
+  border-bottom: 2px solid #20242b;
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-cap-pop {
+    animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
